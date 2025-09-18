@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>รายการอุปกรณ์ - ระบบยืมคืนอุปกรณ์ IT</title>
+  <style>
+    :root {
+      --primary-color: #1E3A8A;
+      --secondary-color: #111827;
+      --accent-color: #2563EB;
+      --background-color: #F8FAFC;
+      --text-color: #1F2937;
+      --button-bg: #2563EB;
+      --button-hover: #1E3A8A;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px auto;
+      max-width: 900px;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      padding: 20px;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    section.category {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    section.category:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    section.category h2 {
+      color: var(--secondary-color);
+      font-size: 22px;
+      margin-bottom: 20px;
+      border-left: 6px solid var(--primary-color);
+      padding-left: 10px;
+    }
+
+    .equipment-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .equipment-card {
+      background: #e3efff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .equipment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.5);
+    }
+
+    .equipment-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .equipment-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    .equipment-desc {
+      font-size: 14px;
+      color: var(--secondary-color);
+      margin-bottom: 12px;
+      min-height: 50px;
+    }
+
+    .equipment-quantity {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+
+    .btn-borrow {
+      background-color: var(--button-bg);
+      color: white;
+      border: none;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-borrow:hover {
+      background-color: var(--button-hover);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>ฮาร์ดแวร์ (Hardware)</h1>
+
+  <section class="category">
+   
+    <div class="equipment-list">
+      <div class="equipment-card">
+        <img src="https://www.carltontechnologies.com/wp-content/uploads/2021/04/Dell-7080-Tower-Desktop-PC.png" alt="คอมพิวเตอร์ตั้งโต๊ะ" />
+        <div class="equipment-name">คอมพิวเตอร์ตั้งโต๊ะ Dell OptiPlex 7080</div>
+        <div class="equipment-desc">Intel Core i7 Gen 10, RAM 16GB, SSD 512GB เหมาะกับงานธุรกิจและกราฟิก</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 10 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('คอมพิวเตอร์ตั้งโต๊ะ Dell OptiPlex 7090')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://notebookspec.com/web/wp-content/uploads/2021/02/HP-Pavilion-15-2021-top-2.jpg" alt="โน้ตบุ๊ค" />
+        <div class="equipment-name">โน้ตบุ๊ค HP Pavilion 15</div>
+        <div class="equipment-desc">Intel Core i5 Gen 11, RAM 8GB, SSD 256GB, จอ 15.6″ Full HD เหมาะงานเอกสาร ดูหนัง เรียน</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('โน้ตบุ๊ก HP Pavilion 15')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://s.alicdn.com/@sc04/kf/He53434ea02de493080a429bd1232c251y/LBP2900-Brand-New-Factory-Price-12ppm-Monochrome-Black-White-Home-Desk-A4-A5-B5-Toner-Printer-150-Sheets-Duplex-for-Canon.jpg_300x300.jpg" alt="เครื่องพิมพ์" />
+        <div class="equipment-name">เครื่องพิมพ์ Canon LBP2900</div>
+        <div class="equipment-desc">เครื่องพิมพ์เลเซอร์ขาวดำ, ความละเอียด 2400×600 dpi, ความเร็วพิมพ์ 12 แผ่น/นาที, USB 2.0, รองรับกระดาษ A4, น้ำหนัก 5.5 กก.</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 8 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('เครื่องพิมพ์ Canon LBP2900')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://images.samsung.com/is/image/samsung/th-led-sf350-ls24f350fhexxt-001-front-black?$330_330_JPG$" alt="All-in-One PC" />
+        <div class="equipment-name">จอมอนิเตอร์ Samsung 24 FHD</div>
+        <div class="equipment-desc">จอ 24 นิ้ว, ความละเอียด 1920x1080 (Full HD), พาเนล IPS/VA, รีเฟรชเรท 60Hz, ตอบสนอง 5ms, พอร์ต HDMI/VGA, เหมาะงานทั่วไป ดูหนัง และเล่นเกมเบา ๆ</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 4 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('จอมอนิเตอร์ Samsung 24 FHD')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://media-cdn.bnn.in.th/340327/Microsoft--55-square_medium.jpg" alt="คีย์บอร์ด" />
+        <div class="equipment-name">คีย์บอร์ด Microsoft Wired Keyboard 600</div>
+        <div class="equipment-desc">คีย์บอร์ด USB มีสาย, ปุ่มครบ, กันน้ำหกเล็กน้อย, ปุ่มนุ่มเสียงเงียบ, ขนาดเต็มพร้อมแป้นตัวเลข, รองรับ Windows/Mac</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('คีย์บอร์ด Microsoft Wired Keyboard 600')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://hnsgsfp.imgix.net/4/images/detailed/5/2004550.jpg?fit=fill&bg=0FFF&w=1500&h=844&auto=format,compress" alt="เมาส์" />
+        <div class="equipment-name">เมาส์ Logitech M185</div>
+        <div class="equipment-desc">เมาส์ไร้สายแบบใช้แบตเตอรี่, เชื่อมต่อด้วยตัวรับสัญญาณ USB Nano Receiver, ความละเอียด 1000 DPI, ใช้งานได้ยาวนานถึง 12 เดือน, ดีไซน์กะทัดรัด เหมาะมือ, รองรับ Windows/Mac/Linux</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('เมาส์ Logitech M185')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://img.advice.co.th/images_nas/pic_product4/A0168771/A0168771OK_BIG_1.jpg" alt="ลำโพง" />
+        <div class="equipment-name">ลำโพง Creative Pebble 2.0 </div>
+        <div class="equipment-desc">ลำโพงตั้งโต๊ะ 2.0 กำลังขับ 4.4 วัตต์ ดีไซน์ทรงโดม มุมเอียง 45° ใช้สาย 3.5 มม. ต่อเสียง, USB รับไฟ เสียงชัดเจน เหมาะพื้นที่เล็ก-กลาง</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 3 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('ลำโพง Creative Pebble 2.0')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://www.emarketplaceth.com/image/cache/catalog/HDD/Harddisk%20External%20seagate%20expansion%20black%20500GB-2-700x700.jpg" alt="ฮาร์ดดิสก์ภายนอก" />
+        <div class="equipment-name">ฮาร์ดดิสก์ภายนอก Seagate Expansion 1TB </div>
+        <div class="equipment-desc">ฮาร์ดดิสก์ภายนอก ความจุ 1TB, เชื่อมต่อผ่าน USB 3.0, ความเร็วสูง, ดีไซน์กะทัดรัด พกพาง่าย เหมาะสำหรับเก็บข้อมูลสำรองและพกพา</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('ฮาร์ดดิสก์ภายนอก Seagate Expansion 1TB')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://www.tohome.com/_next/image?url=https%3A%2F%2Fwww.tohome.com%2Fimages%2FProducts%2F500%2F04032022%2FDT80-64GB.jpg&w=1080&q=75" alt="แฟลชไดร์ฟ" />
+        <div class="equipment-name">แฟลชไดร์ฟ USB Kingston DataTraveler 64GB</div>
+        <div class="equipment-desc">แฟลชไดร์ฟ USB ความจุ 64GB, USB 3.0 ความเร็วสูง, ดีไซน์กะทัดรัด ทนทาน เหมาะสำหรับเก็บข้อมูลและโอนถ่ายไฟล์ทั่วไป</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 8 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('แฟลชไดร์ฟ USB Kingston DataTraveler 64GB')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3iCMbbFTygsJm1KQXAblVrvAWNQ2nYIjzFAN54Vh1qy-INmzaND2iMjR5UNc3EEZxySQ&usqp=CAU" alt="เครื่องสแกน" />
+        <div class="equipment-name">เครื่องสแกน Epson Perfection V39</div>
+        <div class="equipment-desc"> เครื่องสแกนแบบตั้งโต๊ะ ความละเอียดสูง 4800 dpi, เชื่อมต่อผ่าน USB, รองรับสแกนเอกสารและรูปภาพ, ดีไซน์บางเบา พกพาสะดวก เหมาะสำหรับใช้งานที่บ้านและสำนักงาน</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 3 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('เครื่องสแกน Epson Perfection V39')">ยืม</button>
+      </div>
+      
+  <script>
+  function goToBorrowForm(equipmentName) {
+    // ดึงรายการที่เคยยืมจาก localStorage
+    let borrowed = JSON.parse(localStorage.getItem("borrowedItems")) || [];
+
+    // เพิ่มอุปกรณ์ใหม่ที่กด "ยืม"
+    borrowed.push({
+      name: equipmentName,
+      date: new Date().toLocaleString("th-TH") // เวลาที่ยืม
+    });
+
+    // บันทึกกลับเข้า localStorage
+    localStorage.setItem("borrowedItems", JSON.stringify(borrowed));
+
+    // เด้งไปหน้าฟอร์ม พร้อมส่งชื่ออุปกรณ์ไปใน Query String
+    window.location.href = `from.html?item=${encodeURIComponent(equipmentName)}`;
+  }
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ - ระบบยืม-คืนอุปกรณ์ IT</title>
+    <style>
+        :root {
+            --primary-color: #1E3A8A;
+            --secondary-color: #111827;
+            --accent-color: #2563EB;
+            --background-color: #F8FAFC;
+            --text-color: #1F2937;
+            --border-color: #C3D0F7;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1em;
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--primary-color);
+        }
+
+        .note {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--secondary-color);
+        }
+
+        .register-link {
+            margin-top: 25px;
+            font-size: 0.95em;
+            text-align: center;
+        }
+
+        .register-link a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>ยินดีต้อนรับเข้าสู่ระบบบริการยืม - คืน อุปกรณ์ไอที</h2>
+        <form id="loginForm">
+            <label for="email">อีเมล</label>
+            <input type="text" id="email" name="email" required>
+            <label for="password">รหัสผ่าน</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">เข้าสู่ระบบ</button>
+        </form>
+        <div class="register-link">
+            ยังไม่มีบัญชี? <a href="register.html">ลงทะเบียนที่นี่</a>
+        </div>
+        <div class="note">
+            * สำหรับนักศึกษาและครูอาจารย์ของแผนกเทคโนโลยีสารสนเทศเท่านั้น
+        </div>
+    </div>
+
+    <!-- CryptoJS สำหรับแฮชรหัสผ่าน -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault(); // ป้องกัน form รีเฟรช
+            login(); // เรียกฟังก์ชันล็อกอิน
+        });
+
+        function login() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+
+    // ส่งแบบ plaintext (ตรงกับที่ลงทะเบียน)
+    const params = new URLSearchParams();
+    params.append("action", "login");
+    params.append("email", email);
+    params.append("password_hash", password); // <-- ส่งตรง ๆ ไม่ hash
+
+    fetch("https://script.google.com/macros/s/AKfycbxm09OD6vKp1Y3yjDwWm_SuQy2U9SDc_Ps9730U68ePLJlZttyzjOdscSIXbY-N1-acng/exec", {
+        method: "POST",
+        body: params
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.result === "success") {
+            localStorage.setItem("email", data.email);
+            localStorage.setItem("fullname", data.fullname);
+            localStorage.setItem("role", data.role);
+            window.location.href = "home.html"; 
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("เกิดข้อผิดพลาด กรุณาลองใหม่");
+    });
+}
+
+    </script>
+</body>
+
+</html>

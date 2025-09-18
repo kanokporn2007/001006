@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ฟอร์มยืมอุปกรณ์ IT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+      background-color: #f0f4f8;
+      padding: 30px;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+      background-color: #2563EB;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1E40AF;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <h2 class="mb-4" id="greeting">ฟอร์มยืมอุปกรณ์</h2>
+
+    <form name="hardware-sheet" method="post" action="javascript:void(0)" autocomplete="off">
+      <label for="fullname">ชื่อ-นามสกุล</label>
+      <input type="text" id="fullname" name="fullname" class="form-control" required>
+
+      <label for="phone">เบอร์โทรศัพท์</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="เช่น 0123456789" class="form-control"
+        required>
+
+      <label for="item">ชื่ออุปกรณ์</label>
+      <select id="item" name="item" class="form-control" required onchange="updateType()">
+        <option value="">-- กรุณาเลือกอุปกรณ์ --</option>
+      </select>
+
+      <label for="type">ประเภทย่อย</label>
+      <input type="text" id="type" name="type" class="form-control" readonly>
+
+      <label for="qty">จำนวนที่ต้องการยืม</label>
+      <input type="number" id="qty" name="qty" min="1" class="form-control" required>
+
+      <label for="borrowDate">วันที่ยืม</label>
+      <input type="date" id="borrowDate" name="borrowDate" class="form-control" required>
+
+      <label for="returnDate">วันที่คืน</label>
+      <input type="date" id="returnDate" name="returnDate" class="form-control" required>
+
+      <button type="submit">ส่งข้อมูลการยืม</button>
+    </form>
+  </div>
+
+  <script>
+    const itemData = {
+      "คอมพิวเตอร์ตั้งโต๊ะ Dell OptiPlex 7090": "คอมพิวเตอร์",
+      "โน้ตบุ๊ก HP Pavilion 15": "คอมพิวเตอร์",
+      "เครื่องพิมพ์ Canon LBP2900": "อุปกรณ์ต่อพ่วง",
+      "จอมอนิเตอร์ Samsung 24 FHD": "จอภาพ",
+      "คีย์บอร์ด Microsoft Wired Keyboard 600": "อุปกรณ์อินพุต",
+      "เมาส์ Logitech M185": "อุปกรณ์อินพุต",
+      "ลำโพง Creative Pebble 2.0": "อุปกรณ์เสียง",
+      "ฮาร์ดดิสก์ภายนอก Seagate Expansion 1TB": "อุปกรณ์เก็บข้อมูล",
+      "แฟลชไดร์ฟ USB Kingston DataTraveler 64GB": "อุปกรณ์เก็บข้อมูล",
+      "เครื่องสแกน Epson Perfection V39": "อุปกรณ์ต่อพ่วง",
+      "เราเตอร์ TP-Link Archer C6": "เราเตอร์",
+      "สวิตช์ Cisco SG250-26": "สวิตช์",
+      "สายแลน Cat6 UTP CAT6 5 เมตร": "สายเชื่อมต่อ",
+      "โมเด็ม Huawei E8372": "โมเด็ม",
+      "Access Point Ubiquiti UniFi UAP-AC-LR": "จุดเชื่อมต่อ",
+      "สายไฟเบอร์ออปติก Corning Fiber Optic": "สายเชื่อมต่อ",
+      "อแดปเตอร์ PoE TP-Link TL-PoE150S": "อุปกรณ์จ่ายไฟ",
+      "อุปกรณ์ Firewall Fortinet FortiGate 60F": "ความปลอดภัย",
+      "อุปกรณ์ VPN Gateway Cisco ASA 5506-X": "ความปลอดภัย",
+      "สาย Patch Cord Belkin 3 เมตร": "สายเชื่อมต่อ",
+      "เมาส์ไร้สาย Logitech MX Master 3": "เมาส์",
+      "คีย์บอร์ดไร้สาย Microsoft Surface Keyboard": "คีย์บอร์ด",
+      "หูฟัง Sony MDR-ZX110": "อุปกรณ์เสียง",
+      "แท่นวางโน้ตบุ๊ก Rain Design mStand": "อุปกรณ์เสริม",
+      "แผ่นรองเมาส์ Logitech G240": "อุปกรณ์เสริม",
+      "ฮับ USB Anker 4-Port USB 3.0": "USB Hub",
+      "แบตเตอรี่สำรอง (Power Bank) Xiaomi 20,000 mAh": "พลังงานสำรอง",
+      "กล้องเว็บแคม Logitech C270": "กล้อง",
+      "สายชาร์จ USB-C Anker PowerLine+": "สายชาร์จ",
+      "ไฟ LED เสริมสำหรับถ่ายภาพ Neewer 160 LED": "ไฟเสริม",
+      "แรม DDR4 8GB Kingston HyperX Fury": "แรม",
+      "ฮาร์ดดิสก์ SSD 256GB Samsung 970 EVO Plus": "อุปกรณ์เก็บข้อมูล",
+      "การ์ดจอ NVIDIA GeForce RTX 3060": "การ์ดจอ",
+      "ซีพียู Intel Core i7-11700K": "ซีพียู",
+      "เมนบอร์ด ASUS ROG STRIX Z590-E": "เมนบอร์ด",
+      "พาวเวอร์ซัพพลาย 600W Corsair RM600x": "PSU",
+      "พัดลมระบายความร้อน Noctua NH-D15": "Cooling",
+      "การ์ดเสียง Sound Card Creative Sound Blaster Z": "การ์ดเสียง",
+      "การ์ดเน็ตเวิร์ค Intel I210-T1": "การ์ดเชื่อมต่อ",
+      "กล้องจับภาพภายใน Logitech BRIO": "อุปกรณ์เสริม",
+      "เครื่องสำรองไฟ (UPS) APC Back-UPS 650VA": "UPS",
+      "เครื่องฉายโปรเจคเตอร์ Epson EB-S41": "โปรเจคเตอร์",
+      "โต๊ะคอมพิวเตอร์ IKEA BEKANT": "เฟอร์นิเจอร์",
+      "เก้าอี้สำนักงาน Herman Miller Aeron Chair": "เฟอร์นิเจอร์",
+      "จอสัมผัส Dell P2418HT": "อุปกรณ์ต่อพ่วง",
+      "ตัวอ่านบัตร RFID Zebra RFD8500": "อุปกรณ์ต่อพ่วง",
+      "กล้องวงจรปิด Hikvision DS-2CD2143G0-I": "กล้อง",
+      "เครื่องตัดสติ๊กเกอร์ Cricut Explore Air 2": "อุปกรณ์สำนักงาน",
+      "สายชาร์จไฟฟ้า Belkin 3 เมตร": "สายไฟ",
+      "กระเป๋าใส่โน้ตบุ๊ก Samsonite Pro Slim Backpack": "อุปกรณ์เสริม"
+    };
+
+    const select = document.getElementById('item');
+
+    function updateType() {
+      document.getElementById("type").value = itemData[select.value] || "";
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Populate the item dropdown
+      for (const item in itemData) {
+        const option = document.createElement('option');
+        option.value = item;
+        option.textContent = item;
+        select.appendChild(option);
+      }
+
+      // preload ชื่อ (เบอร์ไม่เด้งแล้ว)
+      const fullnameInput = document.getElementById('fullname');
+      const fullname = localStorage.getItem('fullname');
+      if (fullname) fullnameInput.value = fullname;
+
+      // greeting
+      if (fullname) document.getElementById('greeting').textContent = `สวัสดี ${fullname} - ฟอร์มยืมอุปกรณ์`;
+
+      // เลือกอุปกรณ์จาก Query String
+      const params = new URLSearchParams(window.location.search);
+      const selectedItem = params.get('item');
+      if (selectedItem && itemData[selectedItem]) {
+        select.value = selectedItem;
+        updateType();
+      } else {
+        // เลือกอุปกรณ์จาก localStorage ถ้าไม่มีใน Query
+        const savedItem = localStorage.getItem('selectedItem');
+        if (savedItem && itemData[savedItem]) {
+          select.value = savedItem;
+          updateType();
+        }
+      }
+
+      // อัปเดต localStorage เมื่อเปลี่ยน dropdown
+      select.addEventListener('change', () => {
+        localStorage.setItem('selectedItem', select.value);
+        updateType();
+      });
+
+      // อัปเดต localStorage ชื่อเมื่อเปลี่ยน
+      fullnameInput.addEventListener('input', e => {
+        localStorage.setItem('fullname', e.target.value);
+      });
+
+      // ส่วนนี้ถูกลบออกไป เพื่อไม่ให้เบอร์โทรศัพท์เด้งอัตโนมัติ:
+      // const phoneInput = document.getElementById('phone');
+      // const phone = localStorage.getItem('phone');
+      // if (phone) phoneInput.value = phone;
+      // phoneInput.addEventListener('input', e => {
+      //   localStorage.setItem('phone', e.target.value);
+      // });
+
+
+      // ส่งฟอร์ม
+      const form = document.forms['hardware-sheet'];
+      let isSubmitting = false;
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxqoYM9RRnezVssaYsoMa_MEf2Ptd67hOGzgWpduknp9P8BfTy-B0ROjZl0AFoWYGx_CA/exec'; // ตรวจสอบ URL นี้ให้ถูกต้อง
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        if (isSubmitting) return;
+        isSubmitting = true;
+
+        // เก็บข้อมูลจากฟอร์มก่อนส่ง
+        const formData = new FormData(form);
+        const dataToPass = {};
+        for (let [key, value] of formData.entries()) {
+          dataToPass[key] = value;
+        }
+
+        // ก่อน Redirect ไปหน้า HistoryStatus.html
+        // ตรวจสอบให้แน่ใจว่า fullname และ phone ถูกเก็บลง localStorage ก่อนเสมอ
+        // เพื่อให้ HistoryStatus.html ดึงไปใช้ได้ (ถ้าไม่ส่งผ่าน URL param)
+        localStorage.setItem('fullname', dataToPass['fullname']);
+        localStorage.setItem('phone', dataToPass['phone']);
+
+
+        fetch(scriptURL, { method: 'POST', body: formData })
+          .then(res => res.json())
+          .then(() => {
+            Swal.fire({
+              icon: 'success',
+              title: 'บันทึกสำเร็จ',
+              text: 'ข้อมูลการยืมถูกบันทึกเรียบร้อยแล้ว',
+              confirmButtonText: 'ตกลง'
+            }).then(() => {
+              // เพิ่ม 'status=กำลังยืม' ใน dataToPass ก่อนสร้าง URL parameters
+              dataToPass['status'] = 'กำลังยืม'; 
+
+              // สร้าง URL Parameters จากข้อมูลที่เพิ่งยืมไป
+              const historyParams = new URLSearchParams(dataToPass).toString();
+              
+              // Redirect ไปยังหน้าประวัติ พร้อมส่งข้อมูลผ่าน URL Parameters
+              window.location.href = `HistoryStatus.html?${historyParams}`; // ตรวจสอบชื่อไฟล์หน้าประวัติของคุณ
+            });
+            form.reset();
+            localStorage.removeItem('selectedItem'); // เคลียร์ค่าอุปกรณ์หลังส่ง
+            isSubmitting = false;
+          })
+          .catch(err => {
+            Swal.fire({ icon: 'error', title: 'เกิดข้อผิดพลาด', text: 'ไม่สามารถบันทึกข้อมูลได้', confirmButtonText: 'ตกลง' });
+            console.error(err);
+            isSubmitting = false;
+          });
+      });
+    });
+  </script>
+
+</body>
+
+</html>

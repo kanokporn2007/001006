@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>รายการอุปกรณ์ - ระบบยืมคืนอุปกรณ์ IT</title>
+  <style>
+    :root {
+      --primary-color: #1E3A8A;
+      --secondary-color: #111827;
+      --accent-color: #2563EB;
+      --background-color: #F8FAFC;
+      --text-color: #1F2937;
+      --button-bg: #2563EB;
+      --button-hover: #1E3A8A;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px auto;
+      max-width: 900px;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      padding: 20px;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    section.category {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    section.category:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    section.category h2 {
+      color: var(--secondary-color);
+      font-size: 22px;
+      margin-bottom: 20px;
+      border-left: 6px solid var(--primary-color);
+      padding-left: 10px;
+    }
+
+    .equipment-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .equipment-card {
+      background: #e3efff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .equipment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.5);
+    }
+
+    .equipment-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .equipment-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    .equipment-desc {
+      font-size: 14px;
+      color: var(--secondary-color);
+      margin-bottom: 12px;
+      min-height: 50px;
+    }
+
+    .equipment-quantity {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+
+    .btn-borrow {
+      background-color: var(--button-bg);
+      color: white;
+      border: none;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-borrow:hover {
+      background-color: var(--button-hover);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>อื่นๆ (Other)</h1>
+
+  <section class="category">
+   
+    <div class="equipment-list">
+      <div class="equipment-card">
+        <img src="https://image.made-in-china.com/318f0j00HTQtiMaIjClY/7c8124fb3b52de47a77577e24f647677-mp4.webp" alt="เครื่องสำรองไฟ (UPS) APC Back-UPS 650VA" />
+        <div class="equipment-name">เครื่องสำรองไฟ (UPS) APC Back-UPS 650VA</div>
+        <div class="equipment-desc">เครื่องสำรองไฟฟ้าอัตโนมัติ กำลังไฟ 650VA ป้องกันอุปกรณ์จากไฟตก ไฟดับ เหมาะกับคอมพิวเตอร์และอุปกรณ์สำนักงาน</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 2 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('เครื่องสำรองไฟ (UPS) APC Back-UPS 650VA')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src=" https://projector108.com/media/catalog/product/cache/4e5a804e8a6c6a7faf2044c208bbcf59/e/b/eb-s41-2.jpg" alt="เครื่องฉายโปรเจคเตอร์ Epson EB-S41" />
+        <div class="equipment-name">เครื่องฉายโปรเจคเตอร์ Epson EB-S41</div>
+        <div class="equipment-desc">โปรเจคเตอร์ความสว่างสูง เหมาะสำหรับการนำเสนอภาพและวิดีโอในห้องเรียนหรือห้องประชุม</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('เครื่องฉายโปรเจคเตอร์ Epson EB-S41')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="  https://www.ikea-club.org/cache/zoo_images/b/bce675bdc5c514f3e18c71711cf6f78c.jpg" alt="โต๊ะคอมพิวเตอร์ IKEA BEKANT" />
+        <div class="equipment-name">โต๊ะคอมพิวเตอร์ IKEA BEKANT</div>
+        <div class="equipment-desc">โต๊ะทำงานดีไซน์เรียบ แข็งแรง ปรับความสูงได้บางรุ่น เหมาะสำหรับการใช้งานสำนักงานหรือบ้าน</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 3 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('โต๊ะคอมพิวเตอร์ IKEA BEKANT')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src=" https://gaoii.co.th/wp-content/uploads/2023/01/Aeron-Chair-Semi-Full-Adjustable-Herman-Miller.jpg" alt="เก้าอี้สำนักงาน Herman Miller Aeron Chair" />
+        <div class="equipment-name">เก้าอี้สำนักงาน Herman Miller Aeron Chair</div>
+        <div class="equipment-desc">เก้าอี้ระดับพรีเมียม ออกแบบตามหลักสรีรศาสตร์ รองรับสรีระ ลดอาการเมื่อยล้า เหมาะกับการนั่งทำงานระยะยาว</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 4 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('เก้าอี้สำนักงาน Herman Miller Aeron Chair')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src=" https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2020/08/P2418HT-5.jpg" alt="จอสัมผัส Dell P2418HT" />
+        <div class="equipment-name">จอสัมผัส Dell P2418HT</div>
+        <div class="equipment-desc">จอสัมผัสขนาด 23.8 นิ้ว ความละเอียด Full HD รองรับการสัมผัสแบบมัลติทัช เหมาะสำหรับงานอินเทอร์แอคทีฟ</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('จอสัมผัส Dell P2418HT')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://www.pospak.com/images/thumbs/0034140_zebra-rfd8500-handheld-rfid1d2d-sled-%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%AD%E0%B9%88%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%94%E0%B8%9E%E0%B8%81%E0%B8%9E%E0%B8%B2_510.jpeg" alt="ตัวอ่านบัตร RFID Zebra RFD8500" />
+        <div class="equipment-name">ตัวอ่านบัตร RFID Zebra RFD8500</div>
+        <div class="equipment-desc">เครื่องอ่านบัตร RFID แบบพกพา เชื่อมต่อกับสมาร์ทโฟนหรือแท็บเล็ต รองรับงานระบบคลังสินค้าและตรวจสอบสินทรัพย์</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 3 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('ตัวอ่านบัตร RFID Zebra RFD8500')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src=" https://www.thaicctvshop.com/wp-content/uploads/2020/09/DS-2CD2143G0-IU.png " alt="กล้องวงจรปิด Hikvision DS-2CD2143G0-I" />
+        <div class="equipment-name">กล้องวงจรปิด Hikvision DS-2CD2143G0-I</div>
+        <div class="equipment-desc">กล้อง IP Camera ความละเอียด 4MP มาพร้อมอินฟราเรดสำหรับมองกลางคืน เหมาะสำหรับงานรักษาความปลอดภัย</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 2 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('กล้องวงจรปิด Hikvision DS-2CD2143G0-I')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src=" https://assets.central.co.th/Cricut-MintCricutExplore3DIYDigitalCuttingPrintingMachine-MKP1249694-1?$JPEG$&wid=550 " alt="เครื่องตัดสติ๊กเกอร์ Cricut Explore Air 2" />
+        <div class="equipment-name">เครื่องตัดสติ๊กเกอร์ Cricut Explore Air 2</div>
+        <div class="equipment-desc">เครื่องตัดสติ๊กเกอร์และวัสดุหลากหลาย ใช้งานง่าย เชื่อมต่อกับคอมพิวเตอร์ผ่านซอฟต์แวร์ เหมาะสำหรับงานออกแบบ DIY</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 3 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('เครื่องตัดสติ๊กเกอร์ Cricut Explore Air 2')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src=" https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2021/03/Belkin-BOOSTCHARGE-Lightning-to-USB-A-Cable-Black-1.jpg " alt="สายชาร์จไฟฟ้า Belkin 3 เมตร" />
+        <div class="equipment-name">สายชาร์จไฟฟ้า Belkin 3 เมตร</div>
+        <div class="equipment-desc">สายชาร์จคุณภาพสูง ความยาว 3 เมตร รองรับการชาร์จและถ่ายโอนข้อมูลอย่างรวดเร็ว</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('สายชาร์จไฟฟ้า Belkin 3 เมตร')">ยืม</button>
+      </div>
+       <div class="equipment-card">
+        <img src=" https://img.lazcdn.com/g/p/918ec8a701443847267f870f5d6a4cf0.jpg_720x720q80.jpg " alt="กระเป๋าใส่โน้ตบุ๊ก Samsonite Pro Slim Backpack" />
+        <div class="equipment-name">กระเป๋าใส่โน้ตบุ๊ก Samsonite Pro Slim Backpack</div>
+        <div class="equipment-desc">กระเป๋าเป้ดีไซน์บาง น้ำหนักเบา มีช่องจัดเก็บอุปกรณ์หลายช่อง ปกป้องโน้ตบุ๊กได้อย่างปลอดภัย</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('กระเป๋าใส่โน้ตบุ๊ก Samsonite Pro Slim Backpack')">ยืม</button>
+      </div>
+
+      
+<script>
+    function goToBorrowForm(equipmentName) {
+      const encodedName = encodeURIComponent(equipmentName);
+      // เปลี่ยนลิงก์ให้ถูกต้องตามไฟล์ฟอร์มของคุณ เช่น form.html หรือ borrow-form.html
+      window.location.href = `from.html?item=${encodedName}`;
+    }
+  </script>
+</body>
+
+</html>

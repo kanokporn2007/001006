@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>รายการอุปกรณ์ไอที</title>
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif, sans-serif;
+      background-color: #f4f6f8;
+      margin: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #1E3A8A;
+      margin-bottom: 30px;
+    }
+    section {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      margin-bottom: 40px;
+      padding: 20px 30px;
+    }
+    section h2 {
+      border-left: 6px solid #2563EB;
+      padding-left: 12px;
+      color: #2563EB;
+      margin-bottom: 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    thead {
+      background-color: #1E40AF;
+      color: white;
+    }
+    th, td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f9fafb;
+    }
+    tbody tr:hover {
+      background-color: #e0e7ff;
+    }
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      thead tr {
+        display: none;
+      }
+      tbody tr {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+      }
+      tbody td {
+        padding-left: 50%;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid #eee;
+      }
+      tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        top: 10px;
+        font-weight: 600;
+        color: #2563EB;
+        white-space: nowrap;
+      }
+      tbody td:last-child {
+        border-bottom: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>รายการอุปกรณ์ไอที</h1>
+
+  <!-- ฮาร์ดแวร์ (Hardware) -->
+  <section onclick="goToCategory('Hardware.html')" data-category="Hardware">
+    <h2>1. ฮาร์ดแวร์ (Hardware)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ชื่ออุปกรณ์</th>
+          <th>ประเภทย่อย</th>
+          <th>ยี่ห้อ</th>
+          <th>รุ่น</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td data-label="ชื่ออุปกรณ์">คอมพิวเตอร์ตั้งโต๊ะ</td><td data-label="ประเภทย่อย">คอมพิวเตอร์</td><td data-label="ยี่ห้อ">Dell</td><td data-label="รุ่น">OptiPlex 7090</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">โน้ตบุ๊ก</td><td data-label="ประเภทย่อย">คอมพิวเตอร์</td><td data-label="ยี่ห้อ">HP</td><td data-label="รุ่น">Pavilion 15</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">เครื่องพิมพ์</td><td data-label="ประเภทย่อย">อุปกรณ์ต่อพ่วง</td><td data-label="ยี่ห้อ">Canon</td><td data-label="รุ่น">LBP2900</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">จอมอนิเตอร์</td><td data-label="ประเภทย่อย">จอภาพ</td><td data-label="ยี่ห้อ">Samsung</td><td data-label="รุ่น">24" FHD</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">คีย์บอร์ด</td><td data-label="ประเภทย่อย">อุปกรณ์อินพุต</td><td data-label="ยี่ห้อ">Microsoft</td><td data-label="รุ่น">Wired Keyboard 600</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">เมาส์</td><td data-label="ประเภทย่อย">อุปกรณ์อินพุต</td><td data-label="ยี่ห้อ">Logitech</td><td data-label="รุ่น">M185</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">ลำโพง</td><td data-label="ประเภทย่อย">อุปกรณ์เสียง</td><td data-label="ยี่ห้อ">Creative</td><td data-label="รุ่น">Pebble 2.0</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">ฮาร์ดดิสก์ภายนอก</td><td data-label="ประเภทย่อย">อุปกรณ์เก็บข้อมูล</td><td data-label="ยี่ห้อ">Seagate</td><td data-label="รุ่น">Expansion 1TB</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">แฟลชไดร์ฟ USB</td><td data-label="ประเภทย่อย">อุปกรณ์เก็บข้อมูล</td><td data-label="ยี่ห้อ">Kingston</td><td data-label="รุ่น">DataTraveler 64GB</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">เครื่องสแกน</td><td data-label="ประเภทย่อย">อุปกรณ์ต่อพ่วง</td><td data-label="ยี่ห้อ">Epson</td><td data-label="รุ่น">Perfection V39</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- อุปกรณ์เครือข่าย (Network) -->
+  <section onclick="goToCategory('Network.html')" data-category="Hardware">
+    <h2>2. อุปกรณ์เครือข่าย (Network)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ชื่ออุปกรณ์</th>
+          <th>ประเภทย่อย</th>
+          <th>ยี่ห้อ</th>
+          <th>รุ่น</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td data-label="ชื่ออุปกรณ์">เราเตอร์</td><td data-label="ประเภทย่อย">เราเตอร์</td><td data-label="ยี่ห้อ">TP-Link</td><td data-label="รุ่น">Archer C6</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">สวิตช์ (Switch)</td><td data-label="ประเภทย่อย">สวิตช์</td><td data-label="ยี่ห้อ">Cisco</td><td data-label="รุ่น">SG250-26</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">สายแลน Cat6</td><td data-label="ประเภทย่อย">สายเชื่อมต่อ</td><td data-label="ยี่ห้อ">UTP</td><td data-label="รุ่น">CAT6 5 เมตร</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">โมเด็ม</td><td data-label="ประเภทย่อย">โมเด็ม</td><td data-label="ยี่ห้อ">Huawei</td><td data-label="รุ่น">E8372</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">Access Point</td><td data-label="ประเภทย่อย">จุดเชื่อมต่อ</td><td data-label="ยี่ห้อ">Ubiquiti</td><td data-label="รุ่น">UniFi UAP-AC-LR</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">สายไฟเบอร์ออปติก</td><td data-label="ประเภทย่อย">สายเชื่อมต่อ</td><td data-label="ยี่ห้อ">Corning</td><td data-label="รุ่น">Fiber Optic</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">อแดปเตอร์ PoE</td><td data-label="ประเภทย่อย">อุปกรณ์จ่ายไฟ</td><td data-label="ยี่ห้อ">TP-Link</td><td data-label="รุ่น">TL-PoE150S</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">อุปกรณ์ Firewall</td><td data-label="ประเภทย่อย">ความปลอดภัย</td><td data-label="ยี่ห้อ">Fortinet</td><td data-label="รุ่น">FortiGate 60F</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">อุปกรณ์ VPN Gateway</td><td data-label="ประเภทย่อย">ความปลอดภัย</td><td data-label="ยี่ห้อ">Cisco</td><td data-label="รุ่น">ASA 5506-X</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">สาย Patch Cord</td><td data-label="ประเภทย่อย">สายเชื่อมต่อ</td><td data-label="ยี่ห้อ">Belkin</td><td data-label="รุ่น">3 เมตร</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- อุปกรณ์เสริม (Accessories) -->
+  <section onclick="goToCategory('Accessories.html')" data-category="Hardware">
+    <h2>3. อุปกรณ์เสริม (Accessories)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ชื่ออุปกรณ์</th>
+          <th>ประเภทย่อย</th>
+          <th>ยี่ห้อ</th>
+          <th>รุ่น</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td data-label="ชื่ออุปกรณ์">เมาส์ไร้สาย</td><td data-label="ประเภทย่อย">เมาส์</td><td data-label="ยี่ห้อ">Logitech</td><td data-label="รุ่น">MX Master 3</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">คีย์บอร์ดไร้สาย</td><td data-label="ประเภทย่อย">คีย์บอร์ด</td><td data-label="ยี่ห้อ">Microsoft</td><td data-label="รุ่น">Surface Keyboard</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">หูฟัง</td><td data-label="ประเภทย่อย">อุปกรณ์เสียง</td><td data-label="ยี่ห้อ">Sony</td><td data-label="รุ่น">MDR-ZX110</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">แท่นวางโน้ตบุ๊ก</td><td data-label="ประเภทย่อย">อุปกรณ์เสริม</td><td data-label="ยี่ห้อ">Rain Design</td><td data-label="รุ่น">mStand</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">แผ่นรองเมาส์</td><td data-label="ประเภทย่อย">อุปกรณ์เสริม</td><td data-label="ยี่ห้อ">Logitech</td><td data-label="รุ่น">G240</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">ฮับ USB</td><td data-label="ประเภทย่อย">USB Hub</td><td data-label="ยี่ห้อ">Anker</td><td data-label="รุ่น">4-Port USB 3.0</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">แบตเตอรี่สำรอง (Power Bank)</td><td data-label="ประเภทย่อย">พลังงานสำรอง</td><td data-label="ยี่ห้อ">Xiaomi</td><td data-label="รุ่น">20,000 mAh</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">กล้องเว็บแคม</td><td data-label="ประเภทย่อย">กล้อง</td><td data-label="ยี่ห้อ">Logitech</td><td data-label="รุ่น">C270</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">สายชาร์จ USB-C</td><td data-label="ประเภทย่อย">สายชาร์จ</td><td data-label="ยี่ห้อ">Anker</td><td data-label="รุ่น">PowerLine+</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">ไฟ LED เสริมสำหรับถ่ายภาพ</td><td data-label="ประเภทย่อย">ไฟเสริม</td><td data-label="ยี่ห้อ">Neewer</td><td data-label="รุ่น">160 LED</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- อุปกรณ์ภายในคอมพิวเตอร์ -->
+  <section onclick="goToCategory('InternalComputer.html')" data-category="Hardware">
+    <h2>4. อุปกรณ์ภายในคอมพิวเตอร์</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ชื่ออุปกรณ์</th>
+          <th>ประเภทย่อย</th>
+          <th>ยี่ห้อ</th>
+          <th>รุ่น</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td data-label="ชื่ออุปกรณ์">แรม DDR4 8GB</td><td data-label="ประเภทย่อย">แรม</td><td data-label="ยี่ห้อ">Kingston</td><td data-label="รุ่น">HyperX Fury</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">ฮาร์ดดิสก์ SSD 256GB</td><td data-label="ประเภทย่อย">อุปกรณ์เก็บข้อมูล</td><td data-label="ยี่ห้อ">Samsung</td><td data-label="รุ่น">970 EVO Plus</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">การ์ดจอ NVIDIA</td><td data-label="ประเภทย่อย">การ์ดจอ</td><td data-label="ยี่ห้อ">NVIDIA</td><td data-label="รุ่น">GeForce RTX 3060</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">ซีพียู Intel</td><td data-label="ประเภทย่อย">ซีพียู</td><td data-label="ยี่ห้อ">Intel</td><td data-label="รุ่น">Core i7-11700K</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">เมนบอร์ด ASUS</td><td data-label="ประเภทย่อย">เมนบอร์ด</td><td data-label="ยี่ห้อ">ASUS</td><td data-label="รุ่น">ROG STRIX Z590-E</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">พาวเวอร์ซัพพลาย 600W</td><td data-label="ประเภทย่อย">PSU</td><td data-label="ยี่ห้อ">Corsair</td><td data-label="รุ่น">RM600x</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">พัดลมระบายความร้อน</td><td data-label="ประเภทย่อย">Cooling</td><td data-label="ยี่ห้อ">Noctua</td><td data-label="รุ่น">NH-D15</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">การ์ดเสียง Sound Card</td><td data-label="ประเภทย่อย">การ์ดเสียง</td><td data-label="ยี่ห้อ">Creative</td><td data-label="รุ่น">Sound Blaster Z</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">การ์ดเน็ตเวิร์ค</td><td data-label="ประเภทย่อย">การ์ดเชื่อมต่อ</td><td data-label="ยี่ห้อ">Intel</td><td data-label="รุ่น">I210-T1</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">กล้องจับภาพภายใน</td><td data-label="ประเภทย่อย">อุปกรณ์เสริม</td><td data-label="ยี่ห้อ">Logitech</td><td data-label="รุ่น">BRIO</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- อื่น ๆ -->
+  <section onclick="goToCategory('Other.html')" data-category="Hardware">
+    <h2>5. อื่น ๆ</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ชื่ออุปกรณ์</th>
+          <th>ประเภทย่อย</th>
+          <th>ยี่ห้อ</th>
+          <th>รุ่น</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td data-label="ชื่ออุปกรณ์">เครื่องสำรองไฟ (UPS)</td><td data-label="ประเภทย่อย">UPS</td><td data-label="ยี่ห้อ">APC</td><td data-label="รุ่น">Back-UPS 600VA</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">เครื่องฉายโปรเจคเตอร์</td><td data-label="ประเภทย่อย">โปรเจคเตอร์</td><td data-label="ยี่ห้อ">Epson</td><td data-label="รุ่น">EB-S41</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">โต๊ะคอมพิวเตอร์</td><td data-label="ประเภทย่อย">เฟอร์นิเจอร์</td><td data-label="ยี่ห้อ">IKEA</td><td data-label="รุ่น">BEKANT</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">เก้าอี้สำนักงาน</td><td data-label="ประเภทย่อย">เฟอร์นิเจอร์</td><td data-label="ยี่ห้อ">Herman Miller</td><td data-label="รุ่น">Aeron Chair</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">จอสัมผัส Touchscreen</td><td data-label="ประเภทย่อย">อุปกรณ์ต่อพ่วง</td><td data-label="ยี่ห้อ">Dell</td><td data-label="รุ่น">P2418HT</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">ตัวอ่านบัตร RFID</td><td data-label="ประเภทย่อย">อุปกรณ์ต่อพ่วง</td><td data-label="ยี่ห้อ">Zebra</td><td data-label="รุ่น">RFD8500</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">กล้องวงจรปิด IP Camera</td><td data-label="ประเภทย่อย">กล้อง</td><td data-label="ยี่ห้อ">Hikvision</td><td data-label="รุ่น">DS-2CD2143G0-I</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">เครื่องตัดสติ๊กเกอร์</td><td data-label="ประเภทย่อย">อุปกรณ์สำนักงาน</td><td data-label="ยี่ห้อ">Cricut</td><td data-label="รุ่น">Explore Air 2</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">สายชาร์จไฟฟ้า</td><td data-label="ประเภทย่อย">สายไฟ</td><td data-label="ยี่ห้อ">Belkin</td><td data-label="รุ่น">3 เมตร</td></tr>
+        <tr><td data-label="ชื่ออุปกรณ์">กระเป๋าใส่โน้ตบุ๊ก</td><td data-label="ประเภทย่อย">อุปกรณ์เสริม</td><td data-label="ยี่ห้อ">Samsonite</td><td data-label="รุ่น">Pro Slim Backpack</td></tr>
+      </tbody>
+    </table>
+  </section>
+<script>
+function goToCategory(url) {
+  window.location.href = url;
+}
+</script>
+
+</body>
+</html>

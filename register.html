@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ฟอร์มยืมอุปกรณ์ IT - ฮาร์ดแวร์</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    :root {
+      --primary-color: #1E3A8A;
+      --accent-color: #2563EB;
+      --background-color: #F8FAFC;
+      --border-color: #C3D0F7;
+      --text-color: #1F2937;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--background-color);
+      font-family: 'Segoe UI', sans-serif;
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .register-form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .register-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 1em;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--primary-color);
+    }
+  </style>
+</head>
+
+<body>
+  <form id="registerForm" class="register-form" action="#" method="post">
+    <h2>ลงทะเบียนผู้ใช้</h2>
+
+    <label for="role">ประเภทผู้ใช้</label>
+    <select id="role" name="role" required>
+      <option value="">-- กรุณาเลือก --</option>
+      <option value="student">นักศึกษา</option>
+      <option value="teacher">ครูอาจารย์</option>
+    </select>
+
+    <label for="fullname">ชื่อ-นามสกุล</label>
+    <input type="text" id="fullname" name="fullname" required />
+
+    <label for="idnumber">รหัสประจำตัว</label>
+    <input type="text" id="idnumber" name="idnumber" required />
+
+    <label for="phone">เบอร์โทรศัพท์</label>
+    <input type="text" id="phone" name="phone" placeholder="+66812345678" required />
+
+    <label for="email">อีเมล</label>
+    <input type="email" id="email" name="email" />
+
+    <label for="department">สาขาวิชา</label>
+    <select id="department" name="department" required>
+      <option value="">-- กรุณาเลือก --</option>
+      <option value="it">เทคโนโลยีสารสนเทศ</option>
+      <option value="techcom">เทคนิคคอมพิวเตอร์</option>
+      <option value="network">คอมพิวเตอร์เครือข่ายและอุปกรณ์เคลื่อนที่</option>
+    </select>
+
+    <label for="level">ระดับชั้น(นักศึกษา)</label>
+    <input type="text" id="level" name="level" required />
+
+    <label for="password">รหัสผ่าน</label>
+    <input type="password" id="password_hash" name="password_hash" required />
+
+    <label for="confirm">ยืนยันรหัสผ่าน</label>
+    <input type="password" id="confirm" name="confirm" required />
+
+    <button type="submit">ลงทะเบียน</button>
+  </form>
+
+  <script>
+const webAppUrl = "https://script.google.com/macros/s/AKfycbxm09OD6vKp1Y3yjDwWm_SuQy2U9SDc_Ps9730U68ePLJlZttyzjOdscSIXbY-N1-acng/exec"; 
+
+// ✅ auto เติม +66 เบอร์โทร
+document.getElementById("phone").addEventListener("input", function() {
+  let val = this.value;
+
+  if (!val.startsWith("+66")) {
+    val = val.replace(/^0/, ""); // ลบเลข 0 ข้างหน้า
+    this.value = "+66" + val.replace(/^\+66/, "");
+  }
+});
+
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(this);
+  formData.append("action", "register");
+  
+  const params = new URLSearchParams();
+  for (const pair of formData) {
+    params.append(pair[0], pair[1]);
+  }
+
+  fetch(webAppUrl, {
+    method: "POST",
+    body: params
+  })
+  .then(res => res.json())
+  .then(data => {
+    if(data.result === "success"){
+      Swal.fire({
+        icon: 'success',
+        title: 'ลงทะเบียนสำเร็จ!',
+        text: 'กำลังพาไปยังหน้าเข้าสู่ระบบ...',
+        timer: 2000,
+        showConfirmButton: false
+      }).then(() => {
+        window.location.href = "login.html";
+      });
+      this.reset();
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'เกิดข้อผิดพลาด',
+        text: data.error || data.message
+      });
+    }
+  })
+  .catch(err => {
+    Swal.fire({
+      icon: 'error',
+      title: 'เกิดข้อผิดพลาด',
+      text: err
+    });
+  });
+});
+</script>
+
+</body>
+</html>

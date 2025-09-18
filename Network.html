@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>รายการอุปกรณ์ - ระบบยืมคืนอุปกรณ์ IT</title>
+  <style>
+    :root {
+      --primary-color: #1E3A8A;
+      --secondary-color: #111827;
+      --accent-color: #2563EB;
+      --background-color: #F8FAFC;
+      --text-color: #1F2937;
+      --button-bg: #2563EB;
+      --button-hover: #1E3A8A;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px auto;
+      max-width: 900px;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      padding: 20px;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    section.category {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    section.category:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    section.category h2 {
+      color: var(--secondary-color);
+      font-size: 22px;
+      margin-bottom: 20px;
+      border-left: 6px solid var(--primary-color);
+      padding-left: 10px;
+    }
+
+    .equipment-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .equipment-card {
+      background: #e3efff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .equipment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.5);
+    }
+
+    .equipment-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .equipment-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    .equipment-desc {
+      font-size: 14px;
+      color: var(--secondary-color);
+      margin-bottom: 12px;
+      min-height: 50px;
+    }
+
+    .equipment-quantity {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+
+    .btn-borrow {
+      background-color: var(--button-bg);
+      color: white;
+      border: none;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-borrow:hover {
+      background-color: var(--button-hover);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>อุปกรณ์เครือข่าย (Network)</h1>
+
+  <section class="category">
+   
+    <div class="equipment-list">
+      <div class="equipment-card">
+        <img src="https://images.shopkees.com/uploads/cdn/images/1000/187398431_1669188478.jpg" alt="เราเตอร์" />
+        <div class="equipment-name">เราเตอร์ TP-Link Archer C6</div>
+        <div class="equipment-desc">เราเตอร์ Wi-Fi Dual Band (2.4 GHz และ 5 GHz), ความเร็วรวมสูงสุด 1200 Mbps, รองรับ MU-MIMO, มี 4 เสาอากาศภายนอกและเสาภายใน, เหมาะสำหรับใช้งานอินเทอร์เน็ตในบ้านและสำนักงานขนาดเล็ก</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 7 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('เราเตอร์ TP-Link Archer C6')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://m.media-amazon.com/images/I/610bBMoxRNL.jpg" alt="สวิตช์" />
+        <div class="equipment-name">สวิตช์ Cisco SG250-26</div>
+        <div class="equipment-desc">สวิตช์แบบจัดการได้ (Managed Switch) 26 พอร์ต, รองรับ Gigabit Ethernet, มีฟีเจอร์ VLAN, QoS และความปลอดภัยขั้นสูง เหมาะสำหรับเครือข่ายองค์กรขนาดกลางถึงใหญ่</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('สวิตช์ Cisco SG250-26')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://www.dohome.co.th/media/catalog/product/cache/e446f15aaa8dc66b80b7a0df334f7c5a/1/0/10329702_r_1200_3.jpg" alt="สายเชื่อมต่อ " />
+        <div class="equipment-name">สายแลน Cat6 UTP CAT6 5 เมตร</div>
+        <div class="equipment-desc">สายเชื่อมต่อเครือข่ายแบบ UTP, มาตรฐาน CAT6 รองรับความเร็วสูงถึง 1 Gbps, ความถี่ 250 MHz, ความยาว 5 เมตร เหมาะสำหรับการเชื่อมต่อภายในบ้านและสำนักงาน</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 8 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('สายแลน Cat6 UTP CAT6 5 เมตร')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://ae01.alicdn.com/kf/HTB1nrVyJpzqK1RjSZFCq6zbxVXan.jpg_640x640q90.jpg" alt="โมเด็ม" />
+        <div class="equipment-name">โมเด็ม Huawei E8372</div>
+        <div class="equipment-desc"> โมเด็ม USB 4G LTE, รองรับความเร็วดาวน์โหลดสูงสุด 150 Mbps, ใช้งานง่ายแบบเสียบ USB, รองรับ Wi-Fi Hotspot แชร์เน็ตได้สูงสุด 10 อุปกรณ์ เหมาะสำหรับใช้งานอินเทอร์เน็ตเคลื่อนที่</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 4 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('โมเด็ม Huawei E8372')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://m.media-amazon.com/images/I/41ta011QBfS.jpg" alt="Access Point" />
+        <div class="equipment-name">Access Point Ubiquiti UniFi UAP-AC-LR</div>
+        <div class="equipment-desc">Access Point แบบ Dual-Band รองรับ Wi-Fi 802.11ac, ความเร็วรวมสูงสุด 1167 Mbps, กำลังส่งสูง (Long Range), รองรับ PoE, เหมาะสำหรับติดตั้งในอาคารเพื่อขยายสัญญาณไร้สายระยะไกล</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('Access Point Ubiquiti UniFi UAP-AC-LR')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://th.opticomfiber.com/Content/uploads/2021273007/202107021003427e9227bac47146e3b97fa95d2a540b63.jpg" alt="สายไฟเบอร์ออปติก" />
+        <div class="equipment-name">สายไฟเบอร์ออปติก Corning Fiber Optic</div>
+        <div class="equipment-desc">เมาส์ไร้สายแบบใช้แบตเตอรี่, เชื่อมต่อด้วยตัวรับสัญญาณ USB Nano Receiver, ความละเอียด 1000 DPI, ใช้งานได้ยาวนานถึง 12 เดือน, ดีไซน์กะทัดรัด เหมาะมือ, รองรับ Windows/Mac/Linux</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('สายไฟเบอร์ออปติก Corning Fiber Optic')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp4wjopHm8SvM6IHPfujaOBKzHv-2o-IOijuCpUvZpALoiPsttwkI4q4n1g2L4wBcLrmM&usqp=CAU" alt="อแดปเตอร์" />
+        <div class="equipment-name">อแดปเตอร์ PoE TP-Link TL-PoE150S</div>
+        <div class="equipment-desc">อแดปเตอร์ PoE รองรับมาตรฐาน IEEE 802.3af, จ่ายไฟสูงสุด 15.4W,
+          ใช้ได้กับอุปกรณ์ที่รองรับ PoE ผ่านสาย LAN, เหมาะสำหรับการติดตั้ง Access Point หรือกล้อง IP</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 3 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('อแดปเตอร์ PoE TP-Link TL-PoE150S')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU0l1AZdl-73bQQ1YFejD5rv3tbnkwgO_0JUexSEuGrVhv1giS3fMFSHbIZkRVkLHy864&usqp=CAU" alt="Firewall" />
+        <div class="equipment-name">อุปกรณ์ Firewall Fortinet FortiGate 60F</div>
+        <div class="equipment-desc"> อุปกรณ์ Firewall แบบ Next-Generation รองรับการป้องกันภัยคุกคามขั้นสูง, Throughput สูงสุด 10 Gbps, มีพอร์ต LAN/WAN หลายพอร์ต, เหมาะสำหรับเครือข่ายองค์กรขนาดเล็กถึงกลาง</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('อุปกรณ์ Firewall Fortinet FortiGate 60F')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTWp0y4AxP-bA-DK-zJX8guaBGczRMBXutPpXamDhBL1C_bkxESodHOJt83nyHZu78-yg&usqp=CAU" alt="VPN Gateway" />
+        <div class="equipment-name">อุปกรณ์ VPN Gateway Cisco ASA 5506-X</div>
+        <div class="equipment-desc">อุปกรณ์ VPN Gateway และ Firewall ในตัว รองรับการเชื่อมต่อ VPN หลายรูปแบบ, ให้ความปลอดภัยระดับองค์กร, มี 8 พอร์ต Gigabit Ethernet, เหมาะสำหรับเครือข่ายสำนักงานขนาดเล็กถึงกลาง</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 8 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('อุปกรณ์ VPN Gateway Cisco ASA 5506-X')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://www.devicedeal.com.au/assets/full/A3L980BT03MBLUS.jpg?20210309043357" alt="สายเชื่อมต่อ" />
+        <div class="equipment-name">สาย Patch Cord Belkin 3 เมตร</div>
+        <div class="equipment-desc"> สายเชื่อมต่อคุณภาพสูงสำหรับเครือข่าย รองรับความเร็วสูง เหมาะสำหรับเชื่อมต่ออุปกรณ์เครือข่ายระหว่างสวิตช์, เราเตอร์ และพีซี</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 3 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('สาย Patch Cord Belkin 3 เมตร')">ยืม</button>
+      </div>
+    
+    
+
+  <script>
+    function goToBorrowForm(equipmentName) {
+      const encodedName = encodeURIComponent(equipmentName);
+      // เปลี่ยนลิงก์ให้ถูกต้องตามไฟล์ฟอร์มของคุณ เช่น form.html หรือ borrow-form.html
+      window.location.href = `from.html?item=${encodedName}`;
+    }
+  </script>
+</body>
+
+</html>

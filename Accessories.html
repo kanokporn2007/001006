@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>รายการอุปกรณ์ - ระบบยืมคืนอุปกรณ์ IT</title>
+  <style>
+    :root {
+      --primary-color: #1E3A8A;
+      --secondary-color: #111827;
+      --accent-color: #2563EB;
+      --background-color: #F8FAFC;
+      --text-color: #1F2937;
+      --button-bg: #2563EB;
+      --button-hover: #1E3A8A;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px auto;
+      max-width: 900px;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      padding: 20px;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    section.category {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    section.category:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    section.category h2 {
+      color: var(--secondary-color);
+      font-size: 22px;
+      margin-bottom: 20px;
+      border-left: 6px solid var(--primary-color);
+      padding-left: 10px;
+    }
+
+    .equipment-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .equipment-card {
+      background: #e3efff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .equipment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.5);
+    }
+
+    .equipment-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .equipment-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    .equipment-desc {
+      font-size: 14px;
+      color: var(--secondary-color);
+      margin-bottom: 12px;
+      min-height: 50px;
+    }
+
+    .equipment-quantity {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+
+    .btn-borrow {
+      background-color: var(--button-bg);
+      color: white;
+      border: none;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-borrow:hover {
+      background-color: var(--button-hover);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>อุปกรณ์เสริม (Accessories)</h1>
+
+  <section class="category">
+   
+    <div class="equipment-list">
+      <div class="equipment-card">
+        <img src="https://assets.central.co.th/LOGITECH-SpaceGrayBluetoothMouseMXMaster3sModernandSilentforMac-MKP1485622-3?$JPEG$&wid=550" alt="เมาส์ไร้สาย" />
+        <div class="equipment-name">เมาส์ไร้สาย Logitech MX Master 3</div>
+        <div class="equipment-desc">เมาส์ไร้สายระดับพรีเมียม ออกแบบตามหลักสรีรศาสตร์ ปุ่มควบคุมหลายฟังก์ชัน พร้อมล้อเลื่อน MagSpeed และรองรับการเชื่อมต่อ Bluetooth และ USB Receiver</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 7 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('เมาส์ไร้สาย Logitech MX Master 3')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7RUvsVHALNniRnUFsrYhLD6Mlx0N3dJc3ve2EKKEvh7RwJGts87KZf95220VmpbIKM4&usqp=CAU" alt="คีย์บอร์ดไร้สาย" />
+        <div class="equipment-name">คีย์บอร์ดไร้สาย Microsoft Surface Keyboard</div>
+        <div class="equipment-desc">คีย์บอร์ดไร้สายดีไซน์บางพรีเมียม ปุ่มกดนุ่ม ตอบสนองไว รองรับการเชื่อมต่อ Bluetooth เหมาะสำหรับใช้งานร่วมกับอุปกรณ์ตระกูล Surface และพีซีทั่วไป</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('คีย์บอร์ดไร้สาย Microsoft Surface Keyboard')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src=" https://www.sony-asia.com/image/ee0f245aa21c1fddb30714660d8dd890?fmt=pjpeg&wid=1200&hei=470&bgcolor=F1F5F9&bgc=F1F5F9" alt="หูฟัง" />
+        <div class="equipment-name">หูฟัง Sony MDR-ZX110</div>
+        <div class="equipment-desc">หูฟัง On-Ear น้ำหนัก 120 กรัม, ไดรเวอร์ 30 มม. Neodymium, ช่วงความถี่ 12 Hz–22 kHz, ความไว 98 dB/mW, ความต้านทาน 24 โอห์ม, สายยาว 1.2 เมตร, แจ็ค 3.5 มม. แบบ L-shaped, พับเก็บได้</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 8 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('หูฟัง Sony MDR-ZX110')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs3HEcQ_R1XsKv8RK0WjKCeVt-Y-0rBmRb9DyyIeSjpCXwGO0TtEUNkTmUEcv5Y1KTUrA&usqp=CAU" alt="แท่นวางโน้ตบุ๊ก" />
+        <div class="equipment-name">แท่นวางโน้ตบุ๊ก Rain Design mStand</div>
+        <div class="equipment-desc"> แท่นวางโน้ตบุ๊กอะลูมิเนียม ดีไซน์เรียบง่าย แข็งแรง ทนทาน ปรับมุมเอียงเพื่อความสะดวกในการใช้งาน ช่วยระบายความร้อน เหมาะกับโน้ตบุ๊กทุกขนาด</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 4 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('แท่นวางโน้ตบุ๊ก Rain Design mStand')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe6ow4d91s15gcfc0kZ3F1UbK7oyyPuokvAQkfXJme_B6nYCpgvQJ_bxwYg_7qO8niW-Q&usqp=CAU " alt="แผ่นรองเมาส์" />
+        <div class="equipment-name">แผ่นรองเมาส์ Logitech G240</div>
+        <div class="equipment-desc">ผิวผ้าแบบแมตท์ ขนาดกลาง เหมาะกับเมาส์เลเซอร์และออปติคัล พื้นผิวช่วยเพิ่มความแม่นยำและการควบคุมเมาส์</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('แผ่นรองเมาส์ Logitech G240')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://down-th.img.susercontent.com/file/8738456e4ac2adbf07cd92f1fac72b26 " alt="ฮับ USB" />
+        <div class="equipment-name">ฮับ USB Anker 4-Port USB 3.0</div>
+        <div class="equipment-desc"> ความเร็วสูง รองรับ Plug and Play, ดีไซน์กะทัดรัด พกพาง่าย </div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('ฮับ USB Anker 4-Port USB 3.0')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src=" https://www.bigbuy.co.th/content/product/ifww5ZIy-CgKzhbZT7w.jpg" alt="แบตเตอรี่สำรอง" />
+        <div class="equipment-name">แบตเตอรี่สำรอง (Power Bank) Xiaomi 20,000 mAh</div>
+        <div class="equipment-desc">ความจุ 20,000 mAh, รองรับชาร์จเร็ว USB-C และ USB-A, ดีไซน์กะทัดรัด พกพาสะดวก เหมาะสำหรับชาร์จสมาร์ทโฟนและแท็บเล็ตหลายครั้ง</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 4 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('แบตเตอรี่สำรอง (Power Bank) Xiaomi 20,000 mAh')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://media-cdn.bnn.in.th/4391/Logitech-Webcam-2-square_medium.jpg" alt="กล้องเว็บแคม" />
+        <div class="equipment-name">กล้องเว็บแคม Logitech C270</div>
+        <div class="equipment-desc">ความละเอียด 720p HD, ไมโครโฟนในตัว ลดเสียงรบกวน, เชื่อมต่อ USB, เหมาะสำหรับประชุมออนไลน์และสตรีมมิ่งทั่วไป</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 7 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('กล้องเว็บแคม Logitech C270')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://static-jaymart.com/ecom/public/1ngCGHtb5qJfPCP8JeIlsCARC5R.jpg"alt="สายชาร์จ" />
+        <div class="equipment-name">สายชาร์จ USB-C Anker PowerLine+</div>
+        <div class="equipment-desc">คุณภาพสูง ทนทาน รองรับการชาร์จเร็วและถ่ายโอนข้อมูลได้เร็ว ดีไซน์ถักเสริมความแข็งแรง</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('สายชาร์จ USB-C Anker PowerLine+')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://marcas-digitales.com/catalog/images/Neewer-CN-160-Luz-Video.jpg" alt="ไฟ LED" />
+        <div class="equipment-name">ไฟ LED เสริมสำหรับถ่ายภาพ Neewer 160 LED</div>
+        <div class="equipment-desc">LED จำนวน 160 หลอด กำลังแสงปรับได้ มีแผ่นกระจายแสง, ใช้แบตเตอรี่หรือไฟ USB เหมาะสำหรับถ่ายภาพและวิดีโอในที่แสงน้อย</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 4 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('ไฟ LED เสริมสำหรับถ่ายภาพ Neewer 160 LED')">ยืม</button>
+      </div>
+    
+    
+
+  <script>
+    function goToBorrowForm(equipmentName) {
+      const encodedName = encodeURIComponent(equipmentName);
+      // เปลี่ยนลิงก์ให้ถูกต้องตามไฟล์ฟอร์มของคุณ เช่น form.html หรือ borrow-form.html
+      window.location.href = `from.html?item=${encodedName}`;
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>คืนอุปกรณ์ - ระบบยืมคืนอุปกรณ์ IT</title>
+  <style>
+    :root {
+      --primary-color: #1E3A8A;
+      --secondary-color: #374151;
+      --accent-color: #2563EB;
+      --background-color: #F3F4F6;
+      --text-color: #111827;
+      --button-bg: #2563EB;
+      --button-hover: #1E40AF;
+      --error-color: #DC2626;
+      --success-color: #16A34A;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding-top: 60px;
+    }
+
+    .container {
+      background-color: white;
+      width: 400px;
+      border-radius: 12px;
+      padding: 30px 40px;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    h1 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 700;
+      font-size: 28px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      margin-top: 15px;
+      color: var(--secondary-color);
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1.8px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 5px var(--accent-color);
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      background-color: var(--button-bg);
+      color: white;
+      border: none;
+      padding: 15px 0;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--button-hover);
+    }
+
+    .message {
+      margin-top: 15px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: none;
+    }
+
+    .message.error {
+      background-color: #fee2e2;
+      color: var(--error-color);
+      border: 1.5px solid var(--error-color);
+    }
+
+    .message.success {
+      background-color: #dcfce7;
+      color: var(--success-color);
+      border: 1.5px solid var(--success-color);
+    }
+
+    /* ลิงก์กลับหน้าหลัก */
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent-color);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>คืนอุปกรณ์ที่ยืมไป</h1>
+    <form id="returnForm">
+      <label for="borrowerName">ชื่อผู้ยืม</label>
+      <input type="text" id="borrowerName" name="borrowerName" placeholder="กรอกชื่อของคุณ" required />
+
+      <label for="equipment">เลือกอุปกรณ์</label>
+      <select id="equipment" name="equipment" required>
+        <option value="" disabled selected>-- กรุณาเลือกอุปกรณ์ --</option>
+        <option value="TP-Link Archer AX20">เราเตอร์ Wi-Fi 6 TP-Link Archer AX20</option>
+        <option value="Cisco SG110D-08">Switch 8 พอร์ต Cisco SG110D-08</option>
+        <option value="Ubiquiti UAP-AC-Lite">Access Point Ubiquiti UAP-AC-Lite</option>
+        <option value="MikroTik hAP ac2">Router MikroTik hAP ac2</option>
+        <option value="Tenda A9">Wi-Fi Extender Tenda A9</option>
+        <option value="D-Link DGS-1016A">Switch 16 พอร์ต D-Link DGS-1016A</option>
+        <option value="ASUS RT-AX55">เราเตอร์ ASUS RT-AX55</option>
+        <option value="TP-Link EAP245">Access Point TP-Link EAP245</option>
+        <option value="TP-Link TL-SF1008P">Switch PoE TP-Link TL-SF1008P</option>
+        <option value="Linksys EA6350">Router Linksys EA6350</option>
+      </select>
+
+      <label for="returnQuantity">จำนวนที่คืน</label>
+      <input type="number" id="returnQuantity" name="returnQuantity" placeholder="กรอกจำนวนที่คืน" min="1" required />
+
+      <button type="submit">ยืนยันคืนอุปกรณ์</button>
+    </form>
+
+    <div id="message" class="message"></div>
+
+    <a href="home.html" class="back-link">← กลับสู่หน้าหลัก</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('returnForm');
+    const messageBox = document.getElementById('message');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = form.borrowerName.value.trim();
+      const equipment = form.equipment.value;
+      const qty = parseInt(form.returnQuantity.value);
+
+      // ตรวจสอบข้อมูล
+      if (!name) {
+        showMessage('กรุณากรอกชื่อผู้ยืม', 'error');
+        return;
+      }
+
+      if (!equipment) {
+        showMessage('กรุณาเลือกอุปกรณ์ที่ต้องการคืน', 'error');
+        return;
+      }
+
+      if (!qty || qty <= 0) {
+        showMessage('กรุณากรอกจำนวนที่คืนให้ถูกต้อง', 'error');
+        return;
+      }
+
+      // แสดงข้อความสำเร็จ
+      showMessage(`คุณ ${name} ได้คืนอุปกรณ์ "${equipment}" จำนวน ${qty} เครื่อง เรียบร้อยแล้ว`, 'success');
+
+      // รีเซ็ตฟอร์ม
+      form.reset();
+    });
+
+    function showMessage(msg, type) {
+      messageBox.textContent = msg;
+      messageBox.className = 'message ' + type;
+      messageBox.style.display = 'block';
+
+      // ซ่อนข้อความหลัง 5 วินาที
+      setTimeout(() => {
+        messageBox.style.display = 'none';
+      }, 5000);
+    }
+  </script>
+</body>
+
+</html>

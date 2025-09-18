@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>หน้าหลัก - ระบบยืมคืนอุปกรณ์ IT</title>
+  <style>
+    :root {
+      --primary-color: #1E3A8A;
+      --secondary-color: #111827;
+      --accent-color: #2563EB;
+      --background-color: #F8FAFC;
+      --text-color: #1F2937;
+      --alert-color: #DC2626;
+    }
+
+    body {
+      font-family: 'Kanit', sans-serif;
+      margin: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    /* 🔻 แบนเนอร์ที่เป็นหัวเว็บ */
+    .banner {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-bottom: 4px solid var(--primary-color);
+    }
+
+    .banner img {
+      width: 100%;
+      height: auto;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nav-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 0;
+      background: rgba(30, 58, 138, 0.6);
+      /* สีพื้นโปร่งใส */
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .top-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .top-nav a:hover {
+      color: var(--accent-color);
+    }
+
+    .announcement {
+      background-color: #F3F4F6;
+      color: var(--text-color);
+      padding: 15px;
+      margin: 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      border: 1px solid #D1D5DB;
+      overflow: hidden;
+    }
+
+    .announcement marquee {
+      font-size: 16px;
+      color: var(--alert-color);
+    }
+
+    .due-items {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #DBEAFE;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+    }
+
+    .due-items h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .due-item {
+      padding: 12px 15px;
+      border-bottom: 1px solid #93C5FD;
+      color: var(--secondary-color);
+    }
+
+    .due-item:last-child {
+      border-bottom: none;
+    }
+
+    .due-item strong {
+      color: var(--primary-color);
+    }
+
+    .due-item small {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .category-section {
+      background-color: #F1F5F9;
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+      border-radius: 10px;
+    }
+
+    .category-section h2 {
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+
+    .category-link {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      color: var(--secondary-color);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .category-link:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .equipment-section {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .equipment-card {
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .equipment-card:hover {
+      box-shadow: 0 0 15px var(--primary-color);
+    }
+
+    .equipment-card img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: contain;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      padding: 5px;
+    }
+
+    .equipment-card h3 {
+      margin: 10px 0;
+      color: var(--primary-color);
+    }
+
+    .qr-section {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .qr-section img {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 200px;
+      height: 200px;
+    }
+
+    .qr-section p {
+      margin-top: 10px;
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: var(--secondary-color);
+      color: white;
+      margin-top: 30px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ✅ แบนเนอร์ = หัวเว็บ + เมนูลอย -->
+  <section class="banner">
+    <img src="photo/banner.png" alt="แบนเนอร์ระบบยืมคืนอุปกรณ์ IT">
+    <div class="nav-overlay">
+      <nav class="top-nav">
+        <a href="home.html">หน้าหลัก</a>
+        <a href="list.html">รายการอุปกรณ์</a>
+        <a href="HistoryStatus.html">ประวัติการยืม</a>
+        <a href="contact.html">ติดต่อ</a>
+        <a href="Dashboard.html">ประวัติการยืมทั้งหมด</a>
+        <a href="#" onclick="logout()">ออกจากระบบ</a>
+      </nav>
+    </div>
+  </section>
+
+  <h2 id="welcomeText" style="text-align:center; margin-top: 30px;">กำลังโหลด...</h2>
+  <p style="text-align:center; max-width: 600px; margin: 0 auto;">
+    ระบบสำหรับนักศึกษาและอาจารย์ในการยืมและคืนอุปกรณ์คอมพิวเตอร์
+  </p>
+
+  <div class="announcement">
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+      <strong>ประกาศ:</strong> กรุณาคืนอุปกรณ์ให้ตรงตามวันที่กำหนด |
+      <strong>แจ้งเตือน:</strong> หากอุปกรณ์ชำรุด กรุณาแจ้งเจ้าหน้าที่ทันที |
+      <strong>ข่าวดี:</strong> ระบบเปิดให้ยืมอุปกรณ์นอกเวลาเรียนได้แล้ววันนี้ |
+      <strong>โปรดทราบ:</strong> อุปกรณ์บางชนิดต้องได้รับอนุมัติจากอาจารย์ก่อนยืม
+    </marquee>
+  </div>
+
+  <section class="rules-section" style="max-width: 900px; margin: 30px auto; background: #E0F2FE; padding: 20px; border-radius: 10px; box-shadow: 0 0 6px rgba(0,0,0,0.1);">
+  <h2 style="color: var(--primary-color); text-align:center; margin-bottom: 15px;">📜 กฎการยืมอุปกรณ์</h2>
+  <ul style="line-height: 1.8; color: var(--secondary-color); font-weight: 500;">
+    <li>ผู้ยืมต้องเป็นนักศึกษา/อาจารย์ที่ลงทะเบียนในระบบเท่านั้น</li>
+    <li>ตรวจสอบสถานะอุปกรณ์ก่อนยืมว่าพร้อมใช้งาน</li>
+    <li>ยืมอุปกรณ์ตามจำนวนและประเภทที่ระบบกำหนด</li>
+    <li>คืนอุปกรณ์ตรงตามวันที่กำหนด หากล่าช้าต้องแจ้งเจ้าหน้าที่</li>
+    <li>ห้ามทำอุปกรณ์ชำรุดหรือสูญหาย หากเกิดความเสียหายผู้ยืมต้องรับผิดชอบ</li>
+    <li>อุปกรณ์บางชนิดอาจต้องได้รับอนุมัติจากอาจารย์ก่อนยืม</li>
+    <li>ห้ามโอนสิทธิ์การยืมให้ผู้อื่น</li>
+  </ul>
+</section>
+
+  <section class="category-section">
+    <h2>
+      <h2>หมวดหมู่อุปกรณ์ที่ต้องการยืม</h2>
+    </h2>
+    <a href="Hardware.html" class="category-link">ฮาร์ดแวร์ (Hardware)</a>
+    <a href="Network.html" class="category-link">อุปกรณ์เครือข่าย (Network)</a>
+    <a href="Accessories.html" class="category-link">อุปกรณ์เสริม (Accessories)</a>
+    <a href="InternalComputer.html" class="category-link">อุปกรณ์ภายในคอมพิวเตอร์(Internal computer components)</a>
+    <a href="Other.html" class="category-link">อื่น ๆ (Other)</a>
+  </section>
+
+<h2 style="text-align:center; margin-top: 40px;">อุปกรณ์ยอดนิยม</h2>
+<section class="equipment-section">
+  <div class="equipment-card">
+    <img src="https://www.tohome.com/_next/image?url=https%3A%2F%2Fwww.tohome.com%2Fimages%2FProducts%2F500%2F04032022%2FDT80-64GB.jpg&w=1080&q=75" 
+         alt="ภาพอุปกรณ์" 
+         style="cursor:pointer;"
+         onclick="goToBorrowForm('แฟลชไดร์ฟ USB Kingston DataTraveler 64GB')"/>
+    <h3>แฟลชไดร์ฟ USB Kingston DataTraveler 64GB</h3>
+  </div>
+
+  <div class="equipment-card">
+    <img src="https://hnsgsfp.imgix.net/4/images/detailed/5/2004550.jpg?fit=fill&bg=0FFF&w=1500&h=844&auto=format,compress" 
+         alt="ภาพอุปกรณ์" 
+         style="cursor:pointer;"
+         onclick="goToBorrowForm('เมาส์ Logitech M185')"/>
+    <h3>เมาส์ Logitech M185</h3>
+  </div>
+
+  <div class="equipment-card">
+    <img src="https://media-cdn.bnn.in.th/340327/Microsoft--55-square_medium.jpg" 
+         alt="ภาพอุปกรณ์" 
+         style="cursor:pointer;"
+         onclick="goToBorrowForm('คีย์บอร์ด Microsoft Wired Keyboard 600')"/>
+    <h3>คีย์บอร์ด Microsoft Wired Keyboard 600</h3>
+  </div>
+</section>
+
+    <section class="knowledge-section" style="max-width: 900px; margin: 20px auto; background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 6px rgba(0,0,0,0.1); line-height: 1.8;">
+    <h3 style="color: var(--primary-color); text-align:center; margin-bottom: 20px;">📘 เกร็ดความรู้เล็กๆ</h3>
+    
+    <p>🔹 <strong>ฮาร์ดแวร์ (Hardware)</strong><br>
+    ฮาร์ดแวร์คือ สิ่งที่เราสามารถมองเห็นและจับต้องได้ในคอมพิวเตอร์ เช่น ตัวเครื่อง จอภาพ คีย์บอร์ด เมาส์ ลำโพง หรือเครื่องพิมพ์ ฮาร์ดแวร์ทำหน้าที่เหมือน “ร่างกาย” ของคอมพิวเตอร์ ที่ต้องทำงานร่วมกับซอฟต์แวร์ (โปรแกรมต่าง ๆ) เพื่อให้เราใช้งานได้จริง</p>
+
+    <p>🔹 <strong>อุปกรณ์เครือข่าย (Network)</strong><br>
+    อุปกรณ์เครือข่ายคือ ตัวกลางที่ช่วยให้อุปกรณ์สื่อสารถึงกันและเชื่อมต่อกับอินเทอร์เน็ต เช่น เราเตอร์ โมเด็ม หรือสวิตช์ หากไม่มีอุปกรณ์เครือข่าย เราก็จะไม่สามารถเล่นเน็ต แชร์ไฟล์ หรือแชทคุยกันออนไลน์ได้</p>
+
+    <p>🔹 <strong>อุปกรณ์เสริม (Accessories)</strong><br>
+    อุปกรณ์เสริมคือ ของเพิ่มเติมที่ทำให้การใช้งานคอมพิวเตอร์สะดวกหรือสนุกขึ้น แม้ไม่จำเป็นต้องมี แต่ถ้ามีก็ช่วยทำงานได้ดีขึ้น เช่น หูฟัง เมาส์ไร้สาย กล้องเว็บแคม พาวเวอร์แบงก์ หรือพัดลมระบายความร้อนโน้ตบุ๊ก</p>
+
+    <p>🔹 <strong>อุปกรณ์ภายในคอมพิวเตอร์ (Internal Computer Components)</strong><br>
+    อุปกรณ์ภายในคือส่วนประกอบหลักที่ซ่อนอยู่ในตัวเครื่อง เช่น ซีพียู (CPU) แรม (RAM) ฮาร์ดดิสก์/SSD และการ์ดจอ (GPU) ที่ทำให้คอมพิวเตอร์ทำงานได้จริง เปรียบเสมือน “อวัยวะภายใน” ที่ทำให้ร่างกายมีชีวิต</p>
+
+    <p style="background:#F1F5F9; padding: 15px; border-left: 4px solid var(--accent-color); border-radius: 6px; font-weight: 600;">
+      💡 <u>สรุปสั้น ๆ</u><br>
+      ✅ ฮาร์ดแวร์ = ของที่จับต้องได้ เช่น จอ เมาส์ คีย์บอร์ด<br>
+      ✅ อุปกรณ์เครือข่าย = ของที่ทำให้เชื่อมต่ออินเทอร์เน็ตและสื่อสารกัน<br>
+      ✅ อุปกรณ์เสริม = ของเพิ่มเติมที่ช่วยให้ใช้งานสะดวกขึ้น<br>
+      ✅ อุปกรณ์ภายในคอมพิวเตอร์ = ส่วนสำคัญในเครื่องที่ทำให้คอมฯ ทำงานได้จริง
+    </p>
+  </section>
+
+  <section class="qr-section">
+    <h3>สแกน QR Code เพื่อแสดงความคิดเห็น</h3>
+    <img src="photo/แบบสอบถามความพึงพอใจ.png">
+    <p>เปิดกล้องมือถือของคุณ แล้วสแกน QR Code เพื่อไปตอบแบบฟอร์ม</p>
+  </section>
+
+  <footer>
+    จัดทำโดย แผนกเทคโนโลยีสารสนเทศ | © 2025
+  </footer>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxm09OD6vKp1Y3yjDwWm_SuQy2U9SDc_Ps9730U68ePLJlZttyzjOdscSIXbY-N1-acng/exec';
+    const email = localStorage.getItem('email');
+
+    if (!email) {
+      window.location.href = 'login.html';
+    } else {
+      const formData = new FormData();
+      formData.append('action', 'getFullname');
+      formData.append('email', email);
+
+      fetch(scriptURL, { method: 'POST', body: formData })
+        .then(res => res.json())
+        .then(data => {
+          if (data.result === 'success') {
+            document.getElementById('welcomeText').textContent =
+              `ยินดีต้อนรับสู่ระบบยืม-คืนอุปกรณ์ไอที สวัสดี ${data.fullname}`;
+          } else {
+            document.getElementById('welcomeText').textContent = 'ไม่พบข้อมูลผู้ใช้';
+          }
+        })
+        .catch(() => {
+          document.getElementById('welcomeText').textContent =
+            'เกิดข้อผิดพลาดในการโหลดข้อมูล';
+        });
+    }
+
+ function goToBorrowForm(equipmentName) {
+    // ส่งไปยังหน้าแบบฟอร์มยืม เช่น borrow.html และส่งชื่ออุปกรณ์เป็น query string
+    window.location.href = "from.html?item=" + encodeURIComponent(equipmentName);
+  }
+
+    function isDueSoon(dueDateStr) {
+      const today = new Date();
+      const dueDate = new Date(dueDateStr);
+      const diffTime = dueDate - today;
+      const diffDays = diffTime / (1000 * 60 * 60 * 24);
+      return diffDays >= 0 && diffDays <= 7; // กำหนดคืนภายใน 7 วัน
+    }
+
+    function showDueItems() {
+      const dueItemsList = document.getElementById('dueItemsList');
+      dueItemsList.innerHTML = ''; // เคลียร์ก่อน
+
+      let borrowedItems = JSON.parse(localStorage.getItem('borrowedItems') || '[]');
+
+      // กรองรายการที่ใกล้กำหนดคืน
+      const dueSoonItems = borrowedItems.filter(item => isDueSoon(item.dueDate));
+
+      if (dueSoonItems.length === 0) {
+        dueItemsList.innerHTML = '<p>ไม่มีรายการอุปกรณ์ที่ใกล้กำหนดคืน</p>';
+        return;
+      }
+
+      // สร้างรายการแจ้งเตือน
+      dueSoonItems.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('due-item');
+        div.textContent = `อุปกรณ์: ${item.equipmentName} | กำหนดคืน: ${item.dueDate}`;
+        dueItemsList.appendChild(div);
+      });
+    }
+
+    // เรียกฟังก์ชันแสดงผลตอนโหลดหน้า
+    window.onload = showDueItems;
+
+    function logout() {
+  // ลบแค่ข้อมูลการล็อกอิน
+  localStorage.removeItem("email"); // หรือ user
+  // อย่าเคลียร์ borrowedItems หรือ fullname/phone
+  // sessionStorage.clear(); // ถ้าไม่จำเป็น ให้ลบออก
+
+  // ไปหน้า login หรือ index
+  window.location.href = "login.html"; 
+}
+
+  </script>
+</body>
+
+</html>

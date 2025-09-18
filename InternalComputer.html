@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>รายการอุปกรณ์ - ระบบยืมคืนอุปกรณ์ IT</title>
+  <style>
+    :root {
+      --primary-color: #1E3A8A;
+      --secondary-color: #111827;
+      --accent-color: #2563EB;
+      --background-color: #F8FAFC;
+      --text-color: #1F2937;
+      --button-bg: #2563EB;
+      --button-hover: #1E3A8A;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px auto;
+      max-width: 900px;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      padding: 20px;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    section.category {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    section.category:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    section.category h2 {
+      color: var(--secondary-color);
+      font-size: 22px;
+      margin-bottom: 20px;
+      border-left: 6px solid var(--primary-color);
+      padding-left: 10px;
+    }
+
+    .equipment-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .equipment-card {
+      background: #e3efff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .equipment-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.5);
+    }
+
+    .equipment-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .equipment-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    .equipment-desc {
+      font-size: 14px;
+      color: var(--secondary-color);
+      margin-bottom: 12px;
+      min-height: 50px;
+    }
+
+    .equipment-quantity {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+
+    .btn-borrow {
+      background-color: var(--button-bg);
+      color: white;
+      border: none;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-borrow:hover {
+      background-color: var(--button-hover);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>อุปกรณ์ภายในคอมพิวเตอร์ (Internal computer components)</h1>
+
+  <section class="category">
+   
+    <div class="equipment-list">
+      <div class="equipment-card">
+        <img src="https://www.jib.co.th/img_master/product/original/2019091916395035285_1.jpg" alt="แรม" />
+        <div class="equipment-name">แรม DDR4 8GB Kingston HyperX Fury</div>
+        <div class="equipment-desc"> ความเร็วสูง ประสิทธิภาพดี เหมาะสำหรับเกมและงานทั่วไป</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 7 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('แรม DDR4 8GB Kingston HyperX Fury')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2020/10/SSD-Samsung-970-EVO-PLUS-M_2-2-TB-1.jpg" alt="ฮาร์ดดิสก์" />
+        <div class="equipment-name">ฮาร์ดดิสก์ SSD 256GB Samsung 970 EVO Plus</div>
+        <div class="equipment-desc">ความจุ 256GB, ความเร็วอ่าน 3500 MB/s, เขียน 2300 MB/s, รองรับเทคโนโลยี NVMe PCIe Gen 3 เหมาะสำหรับการใช้งานเร็วสูง</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 6 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('ฮาร์ดดิสก์ SSD 256GB Samsung 970 EVO Plus')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://www.cclonline.com/images/avante/gbRTX3060WindFoverc1.JPG?width=1600&height=1600&scale=canvas&trim.threshold=80" alt="การ์ดจอ" />
+        <div class="equipment-name">การ์ดจอ NVIDIA GeForce RTX 3060</div>
+        <div class="equipment-desc">การ์ดจอระดับกลาง-สูง รุ่นใหม่ รองรับ Ray Tracing, VRAM 12GB GDDR6, เหมาะสำหรับเล่นเกมและงานกราฟิกหนัก</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('การ์ดจอ NVIDIA GeForce RTX 3060')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://www.tohome.com/_next/image?url=https%3A%2F%2Fwww.tohome.com%2Fimages%2FProducts%2F500%2F28102022%2FBX8071513700K.png&w=1080&q=75" alt="ซีพียู" />
+        <div class="equipment-name">ซีพียู Intel Core i7-13700K</div>
+        <div class="equipment-desc"> CPU 8 คอร์ 16 เธรด ความเร็วพื้นฐาน 3.6 GHz, Turbo Boost สูงสุด 5.0 GHz, สถาปัตยกรรม Rocket Lake, รองรับ PCIe 4.0 เหมาะสำหรับเกมและงานหนัก</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 4 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('ซีพียู Intel Core i7-11700K')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://spec.in.th/wp-content/uploads/2021/03/MAINBOARD-ASUS-ROG-STRIX-Z590-E-GAMING-WIFI-LGA1200-5.jpg" alt="เมนบอร์ด " />
+        <div class="equipment-name">เมนบอร์ด ASUS ROG STRIX Z590-E</div>
+        <div class="equipment-desc">เมนบอร์ดสำหรับเกมมิ่ง ชิปเซ็ต Intel Z590, รองรับ CPU Intel Gen 10/11, รองรับ PCIe 4.0, RAM DDR4 สูงสุด 128GB, มี Wi-Fi 6, พอร์ต USB 3.2 Gen 2x2, รองรับการระบายความร้อนดีเยี่ยม
+</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('เมนบอร์ด ASUS ROG STRIX Z590-E')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2021/12/Product/corsair-sf600-600w-80-plus-platinum-power-supply-01.jpg" alt="พาวเวอร์ซัพพลาย" />
+        <div class="equipment-name">พาวเวอร์ซัพพลาย Corsair SF600 600W 80 PLUS </div>
+        <div class="equipment-desc"> กำลังไฟ 600 วัตต์, ขนาด SFX, ประสิทธิภาพ 80 PLUS Gold, แบบ Full Modular, พัดลมเงียบ, เหมาะสำหรับคอมพิวเตอร์ขนาดเล็กหรือระบบคอมพิวเตอร์ที่ต้องการความกระทัดรัด</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 4 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('พาวเวอร์ซัพพลาย 600W Corsair RM600x')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREQYFwTm4Pm3tNvXaeE7JUxsNfBx02t_1Mlq3epKVmUo09RNxEjUBIK2G-2wLuMKHqs44&usqp=CAU " alt="พัดลมระบายความร้อน" />
+        <div class="equipment-name">พัดลมระบายความร้อน Cooling Noctua NH-D15</div>
+        <div class="equipment-desc">พัดลมระบายความร้อนแบบ Dual Tower, 2 พัดลม NF-A15 ขนาด 140 มม., ประสิทธิภาพสูง เงียบมาก เหมาะสำหรับ CPU ประสิทธิภาพสูงและโอเวอร์คล็อก</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 5 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('พัดลมระบายความร้อน Noctua NH-D15')">ยืม</button>
+      </div>
+
+      <div class="equipment-card">
+        <img src="https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2019/11/CREATIVE-AE-7-INTERNAL-SOUND-BLASTER-X--4.jpg" alt="การ์ดเสียง" />
+        <div class="equipment-name">การ์ดเสียง SoundCard Creative AE-7 Internal Sound Blaster X</div>
+        <div class="equipment-desc">การ์ดเสียงภายในคุณภาพสูง รองรับเสียง 32-bit/384kHz, DAC ESS Sabre 9038, รองรับเสียงรอบทิศทาง 7.1, เทคโนโลยี CrystalVoice และ Scout Mode เหมาะสำหรับเกมเมอร์และงานเสียงมืออาชีพ</div>
+        <div class="equipment-quantity">จำนวนคงเหลือ: 4 เครื่อง</div>
+        <button class="btn-borrow" onclick="goToBorrowForm('การ์ดเสียง Sound Card Creative Sound Blaster Z')">ยืม</button>
+      </div>
+
+      
+<script>
+    function goToBorrowForm(equipmentName) {
+      const encodedName = encodeURIComponent(equipmentName);
+      // เปลี่ยนลิงก์ให้ถูกต้องตามไฟล์ฟอร์มของคุณ เช่น form.html หรือ borrow-form.html
+      window.location.href = `from.html?item=${encodedName}`;
+    }
+  </script>
+</body>
+
+</html>

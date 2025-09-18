@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ระบบยืม-คืนอุปกรณ์ IT</title>
+  <style>
+    :root {
+      --primary-color: #1E3A8A;
+      --secondary-color: #111827;
+      --accent-color: #2563EB;
+      --background-color: #F8FAFC;
+      --text-color: #1F2937;
+      --button-bg: #2563EB;
+      --button-hover: #1E3A8A;
+      --border-color: #C3D0F7;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--background-color);
+      color: var(--text-color);
+    }
+
+    .banner {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .banner img {
+      width: 100%;
+      height: auto;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nav-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 0;
+      background: rgba(30, 58, 138, 0.6);
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .nav-overlay a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .nav-overlay a:hover {
+      color: var(--accent-color);
+    }
+
+    .container {
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 0px;
+    }
+
+    .scrolling-images {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .scrolling-images .image-strip {
+      display: flex;
+      width: max-content;
+      animation: scrollLeft 30s linear infinite;
+    }
+
+    .scrolling-images img {
+      height: 180px;
+      margin-right: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      user-select: none;
+      background: white;
+      transition: transform 0.3s ease;
+    }
+
+    .scrolling-images img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.7);
+      cursor: pointer;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .intro {
+      max-width: 700px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .intro h2 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .intro p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: var(--secondary-color);
+    }
+
+    .login-button {
+      text-align: center;
+      margin: 30px 0 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .login-button a {
+      background-color: var(--button-bg);
+      color: white;
+      padding: 12px 30px;
+      margin: 10px 0;
+      text-decoration: none;
+      font-size: 1.1em;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(37, 99, 235, 0.4);
+    }
+
+    .login-button a:hover {
+      background-color: var(--button-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(30, 58, 138, 0.6);
+    }
+
+    .info-text {
+      max-width: 700px;
+      margin: 0 auto 40px auto;
+      text-align: center;
+      color: var(--secondary-color);
+      font-size: 1em;
+      line-height: 1.5;
+      font-weight: 500;
+      padding: 0 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+      color: var(--secondary-color);
+      background-color: var(--background-color);
+      border-top: 1px solid var(--border-color);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .scrolling-images {
+        height: 120px;
+      }
+
+      .scrolling-images img {
+        height: 100px;
+        margin-right: 15px;
+      }
+
+      .nav-overlay {
+        flex-wrap: wrap;
+        font-size: 14px;
+        padding: 10px 0;
+      }
+
+      .nav-overlay a {
+        margin: 5px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-button {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔻 แบนเนอร์ที่เป็นหัวเว็บ -->
+  <section class="banner">
+    <img src="photo/banner.png" alt="แบนเนอร์ระบบยืมคืนอุปกรณ์ IT">
+  </section>
+
+  <div class="container">
+    <div class="image-wrapper">
+      <div class="scrolling-images" aria-label="แถบรูปภาพเลื่อน">
+        <div class="image-strip">
+          <!-- ภาพชุด -->
+          <img src="photo/Hardware Acer Aspire 5 A514-54.jpg" alt="อุปกรณ์ 1" />
+          <img src="photo/Hardware All-in-One PC HP Pavilion 24-xa.jpg" alt="อุปกรณ์ 2" />
+          <img src="photo/Hardware Dell OptiPlex 7080.jpg" alt="อุปกรณ์ 3" />
+          <img src="photo/Hardware Dell PowerEdge T40.jpg" alt="อุปกรณ์ 4" />
+          <img src="photo/Hardware LG 24MK430H-B.jpg" alt="อุปกรณ์ 5" />
+          <img src="photo/Hardware มินิพีซี Intel NUC 11 Performance.jpg" alt="อุปกรณ์ 6" />
+          <img src="photo/Hardware Dell P2418HT.jpg" alt="อุปกรณ์ 7" />
+          <img src="photo/Hardware Epson EB-X05.jpg" alt="อุปกรณ์ 8" />
+          <!-- ซ้ำ -->
+          <img src="photo/Hardware Acer Aspire 5 A514-54.jpg" alt="อุปกรณ์ 1" />
+          <img src="photo/Hardware All-in-One PC HP Pavilion 24-xa.jpg" alt="อุปกรณ์ 2" />
+          <img src="photo/Hardware Dell OptiPlex 7080.jpg" alt="อุปกรณ์ 3" />
+          <img src="photo/Hardware Dell PowerEdge T40.jpg" alt="อุปกรณ์ 4" />
+          <img src="photo/Hardware LG 24MK430H-B.jpg" alt="อุปกรณ์ 5" />
+          <img src="photo/Hardware มินิพีซี Intel NUC 11 Performance.jpg" alt="อุปกรณ์ 6" />
+          <img src="photo/Hardware Dell P2418HT.jpg" alt="อุปกรณ์ 7" />
+          <img src="photo/Hardware Epson EB-X05.jpg" alt="อุปกรณ์ 8" />
+        </div>
+      </div>
+    </div>
+
+    <div class="intro">
+      <h2>ยินดีต้อนรับ</h2>
+      <p>
+        เว็บไซต์นี้จัดทำขึ้นเพื่ออำนวยความสะดวกในการยืมและคืนอุปกรณ์ IT ภายในแผนกเทคโนโลยีคอมพิวเตอร์และสารสนเทศ
+        นักศึกษาและอาจารย์สามารถดูรายการอุปกรณ์ ตรวจสอบประวัติการยืม และจัดการบัญชีผู้ใช้งานได้อย่างมีประสิทธิภาพ
+      </p>
+    </div>
+  </div>
+
+  <div class="login-button">
+    <a href="login.html">เข้าสู่ระบบ</a>
+    <a href="history.html">ประวัติผู้จัดทำ</a>
+  </div>
+
+  <div class="info-text">
+    <p>ระบบนี้พัฒนาขึ้นโดยนักศึกษาแผนกเทคโนโลยีสารสนเทศ เพื่อการเรียนรู้และอำนวยความสะดวกในการจัดการอุปกรณ์ IT</p>
+  </div>
+
+  <footer>
+    &copy; 2025 ระบบยืม-คืนอุปกรณ์ IT | พัฒนาเพื่อการศึกษา
+  </footer>
+</body>
+</html>
